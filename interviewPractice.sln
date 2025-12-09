@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stringProcessing", "stringP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruductCalculation", "PruductCalculation\PruductCalculation.csproj", "{55136B72-B8A7-40F8-8506-768168C498FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Real7Items", "Real7Items\Real7Items.csproj", "{58C8FEAF-E898-46B6-8939-4F44AF20E14D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{55136B72-B8A7-40F8-8506-768168C498FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55136B72-B8A7-40F8-8506-768168C498FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55136B72-B8A7-40F8-8506-768168C498FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58C8FEAF-E898-46B6-8939-4F44AF20E14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C8FEAF-E898-46B6-8939-4F44AF20E14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C8FEAF-E898-46B6-8939-4F44AF20E14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C8FEAF-E898-46B6-8939-4F44AF20E14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
