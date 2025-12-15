@@ -1,4 +1,6 @@
-﻿namespace Real7Items
+﻿using System.Collections.Generic;
+
+namespace Real7Items
 {
 	class Program
 	{
@@ -19,7 +21,7 @@
 			string[] dict = { "apple", "ban", "banana", "baking", "abandon", "ba" };
 			// 題目要求：查找包含 "ba" 的字，按長度排序，再按字母序，回傳原始 index
 			var result3 = FuzzySearch("ba", dict);
-			Console.WriteLine(string.Join(", ", result3));
+			Console.WriteLine($"{{{string.Join(", ", result3.Select(i => dict[i]))}}}");
 
 			// 4. 括弧成對檢查
 			Console.WriteLine("\n[4] 括弧檢查");
@@ -114,19 +116,61 @@
 		/// </summary>
 		static string PrimeFactorization(int num)
 		{
-			// TODO: 請實作
-			return "";
+			Dictionary<int,int> factors = new Dictionary<int,int>();
+
+			int numcount = 0;
+			while (num % 2 == 0) { 
+				num /= 2;
+				numcount++;
+			}
+			factors.Add(2, numcount);
+
+			for (int i = 3; i * i <= num; i=i+2) {
+				numcount = 0;
+				while (num % i == 0)
+				{
+					num /= i;
+					numcount++;
+				}
+
+				if (factors.ContainsKey(i))
+				{
+					factors[i] = numcount;
+				}
+				else
+				{
+					factors.Add(i, numcount);
+				}
+
+				if (num > 1) factors.Add(num, 1);
+			}
+
+			List<string> result = new List<string>();
+			foreach (var f in factors)
+			{
+				 result.Add($"{f.Key}^{f.Value}");
+			}
+			return string.Join("*", result);
 		}
 
 		/// <summary>
 		/// 3. 查找字典所有包含 query 的字
 		/// 排序條件：1.長度(短到長) 2.字母順序
 		/// 回傳：該字串在原始陣列的 Index
+		/// linq運用
 		/// </summary>
 		static List<int> FuzzySearch(string query, string[] dictionary)
 		{
-			// TODO: 請實作
-			return new List<int>();
+			var result3 = dictionary
+				.Select((str,i)=>new {str,i})
+				.Where(x => x.str.Contains(query))
+				.OrderBy(x => x.str.Length)
+				.ThenBy(x => x.str)
+				.Select(x => x.i)
+				.ToList();
+			return result3;
+
+
 		}
 
 		/// <summary>
@@ -134,8 +178,24 @@
 		/// </summary>
 		static bool CheckParentheses(string s)
 		{
-			// TODO: 請實作
-			return false;
+			Stack<char> parents = new Stack<char>();
+			foreach (char c in s)
+			{
+				if (c == '{' | c == '[' | c == '(')
+				{
+					parents.Push(c);
+				}
+				else
+				{
+					
+					if (parents.Count == 0) return false;
+					char top = parents.Pop();
+					if (c == '}' & top != '{') return false;
+					if (c == ']' & top != '[') return false;
+					if (c == ')' & top != '(') return false;
+				}
+			}
+			return parents.Count == 0;
 		}
 
 		/// <summary>
