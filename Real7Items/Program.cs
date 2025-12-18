@@ -31,7 +31,9 @@ namespace Real7Items
 			// 5. 基因序列查詢
 			Console.WriteLine("\n[5] 基因序列查詢 (找 ATG)");
 			string gene = "CCATGTTATGGGATG";
-			var result5 = FindGeneSequence(gene, "ATG");
+			string findGene = "ATG";
+			var result5 = FindGeneSequence(gene, findGene);
+			Console.WriteLine(findGene.Length);
 			Console.WriteLine(string.Join(", ", result5));
 
 			// 6. 硬幣組合
@@ -203,8 +205,14 @@ namespace Real7Items
 		/// </summary>
 		static List<int> FindGeneSequence(string gene, string pattern)
 		{
-			// TODO: 請實作
-			return new List<int>();
+			List<int> indices = new List<int>();
+			int index = 0;
+			while ((index = gene.IndexOf(pattern, index)) != -1)
+			{ 
+				indices.Add(index);
+				index += 1;
+			}
+			return indices;
 		}
 
 		/// <summary>
